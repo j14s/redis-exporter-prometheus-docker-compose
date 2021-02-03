@@ -300,7 +300,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "100 * (redis_memory_used_bytes{instance=~\"$instance\"}  / redis_memory_max_bytes{instance=~\"$instance\"} )",
+          "expr": "100 * (redis_memory_used_bytes{instance=~\"$instance\"}  / 2048000000 )",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -365,7 +365,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(redis_commands_processed_total{instance=~\"$instance\"}[1m])",
+          "expr": "rate(redis_commands_processed_total{instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -581,7 +581,7 @@
           "target": ""
         },
         {
-          "expr": "redis_memory_max_bytes{instance=~\"$instance\"} ",
+          "expr": "2048000000",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -1084,7 +1084,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(5, irate(redis_commands_total{instance=~\"$instance\"} [1m]))",
+          "expr": "topk(5, irate(redis_commands_total{instance=~\"$instance\"} [5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
